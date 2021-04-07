@@ -4,19 +4,25 @@ el:'#root',
 
 data: {
 
-  mail: "",
+  mail: []
 
 },
 
 mounted: function(){
 
   let myThis = this;
-  axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-  .then(function(reply){
 
-    myThis.mail = reply.data.response
+  for( let i = 0; i < 10; i++){
 
-  });
+    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+    .then(function(reply){
+
+      myThis.mail.push(reply.data.response);
+
+
+    });
+
+  }
 
 
 }
